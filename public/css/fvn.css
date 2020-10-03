@@ -1,0 +1,160 @@
+/** Общие классы и стили всего проекта */
+P    { margin: 0px; padding: 0px; }
+UL   { padding-left: 16px; margin-bottom: 2px; margin-top: 2px; }
+BODY { max-width: 1600px; }
+
+.container    { max-width: 1600px;}
+.left-bar     { width: 206px; height: 600px; padding: 2px 4px; }
+.page-content { margin-left: 240px; padding-left: 24px; }
+
+.green  { color: #006000; }
+.red    { color: #600000; }
+.blue   { color: #000060; }
+.gray   { color: #606060; }
+.yellow { color: #706000; }
+.cyan   { color: #006070; }
+.blue2  { color: #004080; }
+.purple { color: #600080; }
+
+.col-33      { width: 33%; padding-left: 8px; padding-right: 8px; }
+.col-left33  { float: left; width: 33%; padding-left: 8px; padding-right: 8px; }
+.col-right33 { float: right; width: 33%; padding-left: 8px; padding-right: 8px; }
+.col-left    { float: left; width: 50%; padding-left: 8px; padding-right: 8px; }
+.col-right   { float: right; width: 50%; padding-left: 8px; padding-right: 8px; }
+.div-span    { display: inline-block; }
+.odd         { background-color: #F3F3F3;}
+.even        { background-color: #EAEAEA; }
+.num         { font-weight: bold; text-align: center; }
+.desc        { font-size: 0.8em; color: #808080; }
+.h1          { text-align: center; vertical-align: top; font-size: 1.5em; margin: 1em 4px; }
+.bold        { font-weight: bold; }
+.left        { float: left;  }
+.right       { float: right; }
+.inline      { display: inline-block; }
+.text-left   { text-align: left;   }
+.text-right  { text-align: right;  }
+.text-center { text-align: center; }
+/*.required    { border: 1px solid #B05050; background-color: #ffe0e0; border-radius: 3px; }*/
+.error       { border: 1px solid #ffe0e0; background-color: #ffe0e0; color: #B05050; border-radius: 3px; }
+.message     { border: 1px solid #50B050; background-color: #e0ffe0; border-radius: 3px; color: #50B050; }
+.box-white   { border: 1px solid #D0D0D0; background-color: #FFFFFF; color: #808080; border-radius: 3px; padding: 4px 1em; }
+.box-grey    { border: 1px solid #C0C0C0; background-color: #E8E8E8; color: #606060; border-radius: 3px; padding: 4px 1em; }
+.box-blue    { border: 1px solid #4080C0; background-color: #C0E0FF; color: #2040A0; border-radius: 3px; padding: 4px 1em; }
+.box-bottom  { border-bottom: 1px solid silver; }
+.box-left    { border-left  : 1px solid silver; }
+.box-right   { border-right : 1px solid silver; }
+
+.border      { border: 1px solid silver; }
+.brd-shadow  { border: 1px solid silver; box-shadow: 0 6px 12px #AFAFAF; border-radius: 4px; background-color: white; }
+.noBorder    { border: 0px; }
+.noButton    { border: 0px; background-color: transparent; }
+
+.label-right  { padding: 2px 1em; text-align: right; font-weight: bold; font-size: 11px; font-style: italic; }
+.label        { font-weight: bold; font-size: 11px; font-style: italic; }
+.blue         { color: #2060C0; }
+.table-data   {  padding: 2px 1em; font-size:13px; }
+
+.base-data   {
+    display:none; position: absolute; z-index:100; padding:4px 1em; margin: 2px 4px;
+    box-shadow: inset 0 0 4px #C0C0A0; background-color: #F0F0D0; font-size: 12px;
+}
+.status-ok   {}
+.status-del  { text-decoration: line-through; }
+.created     { font-size: 0.8em; font-size: 0.8em; }
+.author      { color: #808080; font-size: 0.8em; font-style: italic; }
+.updated     { font-size: 0.8em; font-size: 0.8em; }
+.updater     { color: #808080; font-size: 0.8em; font-style: italic; }
+
+.modal-form {
+    position: absolute; left: 100px; top: 200px; z-index: 1000;
+    padding: 4px 1em; margin: 2px;
+    border: 1px solid silver; background-color: #e0e0e0; color: #404040;
+}
+
+/* всплывающий кусок, обрамлять блоком с position:relative; тогда left,top,right,bottom - относительно родителя! */
+.modal-fly {
+    position: absolute; z-index: 1000; display:none;
+    padding: 4px 1em; margin: 2px;
+    border: 1px solid silver;
+}
+
+.form-select { font-size:0.9em; border: 1px solid silver; }
+.form-submit { text-align: center; }
+.form-error  { color: red; }
+.err-field   { font-weight: bold; }
+.err-data    { font-style: italic; }
+
+.btn  { border-color: #808080; padding: 2px 1em; margin: 4px; background-color: #60B0FF; color: #003060; }
+.btn1 {
+    padding: 2px 4px; margin: 0px; font-weight: normal;
+    border: 3px ridge silver; border-radius: 5px;
+    cursor: pointer; font-size: 12px; line-height:1;
+}
+.btn2 {
+    padding: 2px 1em; margin: 0px; font-weight: normal;
+    border: 3px double #A0A0A0; border-radius: 3px;
+    cursor: pointer; font-size: 12px; line-height:1;
+}
+.btn-add          { color: #006000; background-color: #B0F0B0; }
+.btn-add:hover    { color: #005000; background-color: #A0D0A0; }
+.btn-delete       { color: #600000; background-color: #F0B0B0; }
+.btn-delete:hover { color: #500000; background-color: #D0A0A0; }
+.btn-update       { color: #000060; background-color: #60B0F0; }
+.btn-update:hover { color: #000050; background-color: #40A0D0; }
+.btn-close        { color: #606060; background-color: #C0C0C0; }
+.btn-close:hover  { color: #505050; background-color: #A0A0A0; }
+.btn-yellow       { color: #706000; background-color: #F0F0C0; }
+.btn-yellow:hover { color: #604800; background-color: #D0D0A0; }
+.btn-white        { color: #606060; background-color: #FFFFFF; }
+.btn-white:hover  { color: #606060; background-color: #E0E0E0; }
+.btn-cyan         { color: #006070; background-color: #C0F0F0; }
+.btn-cyan:hover   { color: #004860; background-color: #A0D0D0; }
+.btn-blue         { color: #004080; background-color: #70C0F0; }
+.btn-blue:hover   { color: #003060; background-color: #50A0D0; }
+.btn-error        { color: #800000; background-color: #F0C0C0; }
+.btn-error:hover  { color: #602020; background-color: #D0A0A0; }
+.btn-error2       { color: #600080; background-color: #D0C0F0; }
+.btn-error2:hover { color: #402060; background-color: #C0A0D0; }
+
+/* fvn-20171011: добавлен блок универсальной искалки в fvnlib.js */
+.searched-block     {
+    border: 1px solid silver; box-shadow: 0 6px 12px #AFAFAF; border-radius: 4px; background-color: white;
+    font-size: 14px; padding: 5px 0px; text-align: left; max-height: 246px; height: auto;
+    overflow-y: auto; overflow-x: auto;
+}
+.searched-row       { color: #333333; padding: 3px 20px; font-weight: 400px; white-space: nowrap; line-height: 1.9em; }
+.searched-row:hover { color: white;  background-color: #428BCA; }
+
+.form     { background-color: #F0F0F0; border: 1px solid #C0C0C0; }
+.form-top { background-color: #F0F0F0; border-top: 1px solid silver; padding: 2px 4px; }
+P.form        { padding: 2px 4px; border: 0px; }
+P.form-right  { padding: 2px 4px; text-align:right; padding-right: 1em; }
+P.form-center { padding: 2px 4px; text-align:center; }
+.form INPUT        { border: 1px solid silver; font-size: 0.9em; margin: 0px; padding: 0px 2px; }
+.form-right INPUT  { border: 1px solid silver; font-size: 0.9em; margin: 0px; padding: 0px 2px; }
+.form-right INPUT  { border: 1px solid silver; font-size: 0.9em; margin: 0px; padding: 0px 2px; }
+
+/* fvn-20180827: Классы для кнопочного и вкладочного гориз. меню */
+.inner     { display: none; }
+
+.menu        {}
+.menu-btns   {}
+.menu-item   {}
+.menu-item:hover {}
+.menu-active {}
+.menu-inners {}
+
+.tabs        {}
+.tabs-btns   {}
+.tabs-item   {
+    border: 1px solid darkblue; border-radius: 4px 4px 0px 0px; border-collapse: collapse;
+    padding: 4px 1em; margin: 0px; margin-top: 4px;
+    color: #004080; background-color: #70C0F0;
+}
+.tabs-item:hover { color: #003060; background-color: #50A0D0; }
+.tabs-active {
+    border: 1px solid darkblue; border-radius: 4px 4px 0px 0px; border-collapse: collapse; border-bottom: 0;
+    padding: 4px 1em; margin: 0px; margin-top: 4px;
+    background-color: white; color: blue;
+}
+.tabs-inners {}

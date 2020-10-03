@@ -1,0 +1,26 @@
+<?php
+/**
+ * Формирует HTML вывод для заданного списка рекламных изданий, ТВ, радиостанций и т.д. в виде чекбоксов для их выбора в рекламный план
+ *
+ * @var array $rows -- собственно список [id, strName, itiraz, strComment]
+ */
+
+echo '<ul>';
+foreach($rows as $r){
+  $comment = empty($r['strComment'])? '.. а нету ..' : $r['strComment'];
+  echo "
+  <li class='adv-item box-grey'>
+    <button type='button' class='btn btn-close' onclick=\"$('.modal-fly').hide(); fvn.toggle('#comment-{$r['id']}', $(this), {top:32, left:100});\"> ? </button>
+    &nbsp;
+    <input type='checkbox' name='item[{$r['type']}][{$r['id']}]' value='1'>
+    <div class='inline'>
+        <span class='bold'>{$r['strName']}</span>
+    </div>
+    <div id='comment-{$r['id']}' class='desc box-blue modal-fly' style='display:none; width: 800px;'>
+      <button type='button' class='right btn btn-close' onclick='fvn.close({}, $(this).parent());'> x </button>
+      {$comment}
+    </div>
+  </li>
+  ";
+}
+echo '</ul>';

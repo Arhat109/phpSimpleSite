@@ -1,0 +1,16 @@
+<?php
+/**
+ * Вид странички "менеджеры фирмы", "наши сотрудники"..
+ *
+ * @var array $myData
+ * @var array $managers
+ */
+//die(var_dump($managers));
+?>
+<div id="managers" class="page-content">
+  <ul>
+  <?php foreach( $managers as $m ){
+    echo "<li><span class='bold'>{$m['strmanager']}</span>, <span class='desc'>email: {$m['stremail']}, работает с: {$m['din']}</span></li>";
+  } ?>
+  </ul>
+</div>

@@ -1,0 +1,15 @@
+<?php
+/**
+ * Выводит ajax-html содержимое в JSON {result(,main,debug,profiler - options IS_DEBUG true)}
+ *
+ * @global array $ajaxResult
+ */
+
+if( IS_DEBUG ){
+  $ajaxResult['main']     = $mainContent;
+  $ajaxResult['debug']    = $debugContent;
+  $ajaxResult['profiler'] = $profiler;
+}
+
+echo json_encode($ajaxResult);
+// JSON_HEX_QUOT|JSON_OBJECT_AS_ARRAY|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES

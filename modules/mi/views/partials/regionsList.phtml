@@ -1,0 +1,30 @@
+<?php
+/**
+ * Частичный вывод списка регионов ссылками в несколько столбцов
+ *
+ * @var array $regions [id, strName, strDescription]
+ * @var int   $cols
+ * @var int   $big
+ * @var int   $reg
+ *
+ * @author fvn20190418
+ */
+
+$colCount = 0;
+echo '<table><tbody><tr>';
+foreach($regions as $r){
+  if( $colCount >= $cols ){ echo '<tr></tr>'; $colCount=0; }
+  if( $reg == $r['id'] ){
+    echo "
+<td title='{$r['strDescription']}'>{$r['strName']}</td>
+  ";
+  }else{
+    echo "
+<td title='{$r['strDescription']}'><a href='/mi/reklama?big={$big}&reg={$r['id']}'>{$r['strName']}</a></td>
+  ";
+  }
+  $colCount++;
+}
+echo '</tr></tbody></table>';
+?>
+

@@ -1,0 +1,46 @@
+<?php
+use utils\HtmlUtils;
+
+/**
+ * Левый сайдбар - меню видов рекламы, регионов и т.д.
+ *
+ * @var array $data -- [id, strName, strDescription] округ, регион, город для рекламной кампании + описание(title)
+ */
+?>
+<div id="leftBar" class="left left-bar box-blue">
+  <?php
+//  include 'partials/regionSelectors.phtml';
+  include 'partials/okrugList.phtml';
+  ?>
+<!-- типы рекламы в регионе как селектор
+  <select id="rekTypes" onchange="" style="display:none;">
+    <option value=""       >виды рекламы</option>
+    <option value="smi"    >Пресса</option>
+    <option value="radio"  >Радио</option>
+    <option value="tv"     >ТВ реклама</option>
+    <option value="bild"   >Наружка</option>
+    <option value="cars"   >Транспорт</option>
+    <option value="btl"    >БТЛ акции</option>
+    <option value="inet"   >Интернет реклама</option>
+    <option value="poly"   >Печатная продукция</option>
+    <option value="suvenir">Сувенирная реклама</option>
+    <option value="lift"   >Реклама в лифтах</option>
+    <option value="metro"  >Реклама в Метро</option>
+  </select>
+-->
+  <!-- виды рекламы кнопками выбора -->
+  <p>Виды рекламы</p>
+  <div onchange="showAdverts()" style="font-size: 11px;">
+    <p><input type="radio" class="adv-type" name="advert" value="smi"    > Печатные издания</p>
+    <p><input type="radio" class="adv-type" name="advert" value="radio"  > Радиостанции</p>
+    <p><input type="radio" class="adv-type" name="advert" value="tv"     > Телеканалы</p>
+    <p><input type="radio" class="adv-type" name="advert" value="bild"   > Щиты и билборды</p>
+    <p><input type="radio" class="adv-type" name="advert" value="cars"   > Реклама на транспорте</p>
+    <p><input type="radio" class="adv-type" name="advert" value="metro"  > Реклама в Метро</p>
+    <p><input type="radio" class="adv-type" name="advert" value="btl"    > Акции BTL</p>
+    <p><input type="radio" class="adv-type" name="advert" value="inet"   > Продвижение в интернет</p>
+<!--    <p><input type="radio" class="adv-type" name="advert" value="poly"   > Полиграфия</p>
+    <p><input type="radio" class="adv-type" name="advert" value="suvenir"> Сувенирная продукция</p> -->
+    <p><input type="radio" class="adv-type" name="advert" value="lift"   > Реклама в лифтах</p>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<?php
+/**
+ * Выводит содержимое заданного файла с заголовками для загрузок и/или просмотров
+ * 
+ * Самостоятельно формирует все заголовки, поэтому до него не должно быть никакого вывода в поток!
+ * 
+ * @author fvn-20140303
+ * @author ,fvn-20141002 -- исправлен вывод больших файлов.
+ */
+$now =  gmdate("D, d M Y H:i:s");
+
+header ( "Expires: $now GMT" );
+header ( "Last-Modified: $now GMT" );
+header ( "Cache-Control: no-cache, must-revalidate" );
+header ( "Pragma: no-cache" );
+foreach($headerContent as $header) header($header);
+
+// сбрасываем буферизацию вывода, поскольку файл может оказаться "больше" чем есть памяти:
+while (@ob_end_flush());
+
+if( !empty($fileContent) )	echo $fileWrapper['start'] . $fileContent . $fileWrapper['end'];
+elseif( !empty($fileName) )	{
+	//КОСЯК был тут! Файл не лезет в память, а его пробуем выдать предварительно закачав туда же!
+	//echo $fileWrapper['start'] . file_get_contents($fileName) . $fileWrapper['end'];
+	if( !($fh=@fopen($fileName, 'rb')) )
+		throw new Exception('layouts/file.phtml:: ERROR! Не удалось открыть этот файл. Не создан?', 500);
+
+	echo $fileWrapper['start'];
+	do {
+		echo fgets($fh);
+	} while( !feof($fh) );
+	echo $fileWrapper['end'];
+	fclose($fh);
+}
+else throw new Exception(
+	'layouts/file.phtml:: ERROR! Не задано ни имя файла вывода ни его содержимое! Нечего показать.'
+);
+
+// надо, поскольку есть в главном файле его завершалка:
+ob_start();

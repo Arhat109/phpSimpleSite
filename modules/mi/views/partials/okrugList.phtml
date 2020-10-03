@@ -1,0 +1,23 @@
+<?php
+/**
+ * Частичный вывод списка округов ссылками с параметром
+ *
+ * @var int   $big -- текущий округ
+ * @var array $data[id, strName, strDescription]
+ *
+ * @author fvn20191018
+ */
+
+echo '<div style="font-size: 13px;">';
+foreach($data as $d){
+  if( empty($d['strName']) ){ continue; }
+  if( $big == $d['id'] ){
+    echo "  <div title='{$d['strDescription']}' class='text-center'>{$d['strName']}</div>";
+  }else{
+    echo "  <div title='{$d['strDescription']}' class='btn blue text-center'><a href='/mi/reklama?big={$d['id']}'>{$d['strName']}</a></div>";
+  }
+}
+echo '</div>';
+?>
+
+

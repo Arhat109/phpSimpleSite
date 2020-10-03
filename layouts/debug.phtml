@@ -1,0 +1,40 @@
+<?php
+/**
+ * Страница вывода перехватываемых ошибок для example.ru.
+ * 
+ * @param $mainContent  -- блок ответа на запрос
+ * @param $cssContent   -- стили для этой страницы
+ * @param $jsContent    -- сборка всех js скриптов этого вывода
+ * @param $H1           -- главный заголовок страницы, если надо
+ * @param $debugContent -- блок отладочной инфы, если надо
+ * 
+ * @param $title       -- заголовок страницы для браузера
+ * @param $keywords    -- сборка ключевиков, если надо
+ * @param $description -- описание страницы, если надо
+ * 
+ * @author fvn-20120201..
+ */
+?>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" >
+
+  <title>Ошибка</title>
+
+  <!--[if IE 9]>
+  <link href="/css/main/ie9.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  <!--[if lte IE 8]>
+  <link href="/css/main/ie8.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+
+</head>
+<body>
+	<h1>Ошибка на <?=SITE_NAME . ' &quot;'. ( empty($H1)? $inUrl['path'] : $H1) .'&quot;';?></h1>
+	<div id="debugAll"><?=$debugContent; ?></div>
+	<div id="debugCss" style="display:none;"><pre><?=(is_array($cssContent)?print_r($cssContent, true):$cssContent); ?></pre></div>
+	<div id="debugjs"  style="display:none;"><pre><?=(is_array($jsContent)?print_r($jsContent, true):$jsContent); ?></pre></div>
+	<div id=main-body style="display:none;"><?=$mainContent; ?></div>
+</body>
+</html>

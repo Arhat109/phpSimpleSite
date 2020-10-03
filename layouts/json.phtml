@@ -1,0 +1,10 @@
+<?php
+/**
+ * Выводит ajax-json содержимое.
+ */
+
+if( !is_array($mainContent)) $mainContent = array($mainContent);
+
+$mainContent['debug'] = $debugContent;
+
+echo json_encode($mainContent);

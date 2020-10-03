@@ -1,0 +1,28 @@
+<?php
+/**
+ * Вид отрисовки страницы "контакты фирмы"
+ * @var array $myData
+ * @var array $contacts
+ */
+?>
+<div id="contacts" class="page-content">
+  <h2>Реквизиты и контактная информация</h2>
+  <div>
+    <ul>
+      <li>Название:<?=$myData['strclient'];?>, действует с: <?=$myData['dopen'];?></li>
+      <li>почтовый адрес: <?=$myData['stradres_post'];?></li>
+      <li>ИНН: <?=$myData['strinn'];?>/<?=$myData['strkpp'];?>, ОГРН: <?=$myData['ogrn'];?>, ОКВЭД: <?=$myData['okved'];?>, ОКПО: <?=$myData['okpo'];?></li>
+      <li><?=$myData['strdirectordolgnost'];?> <?=$myData['strdirector'];?>, на основании <?=$myData['strosnovanie'];?></li>
+      <li>счет в <?=$myData['strbank'];?>, БИК: <?=$myData['strbik'];?></li>
+    </ul>
+  </div>
+  <br/>
+  <div>
+    <strong>Обращаться:</strong>
+    <?php
+    foreach( $contacts as $c ){
+      echo "<p>{$c['type']}: {$c['contact']}</p>";
+    }
+    ?>
+  </div>
+</div>

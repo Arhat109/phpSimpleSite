@@ -1,0 +1,30 @@
+<?php
+/**
+ * вид "наши партнеры"
+ *
+ * @var $list -- список партнеров
+ */
+?>
+<div id="partners" style="padding-left: 120px;">
+  <table><tbody>
+    <tr>
+      <?php
+      $count = 0; $strCount=4;
+      foreach($list as $l){
+        if( false !== strpos($l['pBrend'], 'Реклама Онлайн') ){ continue; }
+        if( $count == $strCount ){ echo '</tr><tr>'; $count=0; }
+        ?>
+        <td class="box-white" style="eight: 200px; width: 200px; vertical-align: bottom;">
+          <div class="bold blue text-center"><?=$l['pBrend'];?></div>
+          <div class="btn-blue" style="height:160px; width:160px;">
+            <div style="position:relative; top:45%; text-align:center;">лого</div>
+          </div>
+          <div class="desc">с даты: <?=$l['dtStart'];?></div>
+        </td>
+        <?php
+        $count++;
+      } ?>
+    </tr>
+  </tbody></table>
+</div>
+

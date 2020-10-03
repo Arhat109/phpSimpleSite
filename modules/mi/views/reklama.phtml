@@ -1,0 +1,17 @@
+<?php
+/**
+ * Вид страницы размещения рекламы. Предварительно выводится левый sidebar
+ *
+ * поставляет блок вывода списка рекламных изданий, радиостанций и т.д.
+ *
+ * @var array $regions
+ * @var int   $cols
+ * @var int   $big
+ * @var int   $reg
+ */
+?>
+<div id="adverts" class="page-content">
+  <?php include 'partials/regionsList.phtml'; ?>
+  <!-- AJAX заполнение списком изданий -->
+  <div id="advList" style="display:none;"></div>
+</div>

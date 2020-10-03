@@ -1,0 +1,29 @@
+<?php
+/**
+ * главное меню - сверху страницы в виде лого - название - кнопки главного меню.
+ *
+ * @global array $inUrl
+ */
+
+//var_dump($inUrl);
+$action = empty($inUrl['paths'])? '' : $inUrl['paths'][0]; // следующий кусок URI - действие для диспетчера (это главный index.php!)
+
+?>
+<style>
+    #mainMenu .menu-item       { border: 1px solid #4080C0; background-color: #C0E0FF; color: #2040A0; border-radius: 3px; padding: 4px 1em; }
+    #mainMenu .menu-item:hover { color: #003060; background-color: #50A0D0; }
+
+    #mainMenu .menu-active     { border: 1px solid #C0C0C0; background-color: #E8E8E8; color: #606060; border-radius: 3px; padding: 4px 1em; }
+</style>
+<div id="mainMenu" class="container box-grey">
+  <a href="/mi"><img class="left" src="/public/images/<?=$idClient;?>/logo.png"></a>
+  <div class="inline" style="margin-left: 3em;">
+      <div class="h1"><?=$myData['strclient'];?></div>
+      <div class="menu">
+        <a href="/mi/reklama"  target="_self" class="menu-<?=$action!='reklama'?'item':'active';?>">Размещение рекламы</a>
+        <a href="/mi/partners" target="_self" class="menu-<?=$action!='partners'?'item':'active';?>">Наши партнеры</a>
+        <a href="/mi/managers" target="_self" class="menu-<?=$action!='managers'?'item':'active';?>">сотрудники</a>
+        <a href="/mi/contacts" target="_self" class="menu-<?=$action!='contacts'?'item':'active';?>">контакты</a>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<?php
+use utils\HtmlUtils;
+
+/**
+ * Частичный вывод округов в виде SELECT с JS-AJAX подгрузкой списка регионов в соответствующий селектор
+ *
+ * @var array $data[id, strName, strDescription]
+ *
+ * @author fvn20191018
+ */
+?>
+<style>
+  SELECT { width: 200px; }
+</style>
+<script>
+    /** AJAX прием списка регионов округа из SELECT#okrugs */
+    function showRegions()
+    {
+        fvn.loadAjax({
+            uri: '/mi/getRegions',       // запросить это
+            objTo: $('#regions'),        // результат воткнуть сюда
+            options: { detail: 'reg' },  // общие параметры запроса
+            from: $('#leftBar'),         // дин. поиск в этом ДОМ
+            find: ['#okrugs'],           // искать это
+            findTo: ['fkey']             // отправить как это
+        });
+        $('#regions').show();
+        fvn.close({}, '#cities');
+        fvn.close({}, '#rekTypes');
+    }
+    /** AJAX прием списка городов из SELECT#regions */
+    function showCities()
+    {
+        fvn.loadAjax({
+            uri: '/mi/getRegions',        // запросить это
+            objTo: $('#cities'),          // результат воткнуть сюда
+            options: { detail: 'city' },  // общие параметры запроса
+            from: $('#leftBar'),          // дин. поиск в этом ДОМ
+            find: ['#regions'],           // искать это
+            findTo: ['fkey']              // отправить как это
+        });
+        $('#cities').show();
+        fvn.close({}, '#rekTypes');
+    }
+    /** AJAX прием списка типов рекламы из SELECT#cities */
+    function showRekTypes()
+    {
+        $('#rekTypes').show();
+    }
+    /** AJAX получение списка печатки по городу */
+    function showSmi(type)
+    {
+        fvn.loadAjax({
+            uri: '/mi/getAdvert',          // запросить это
+            objTo: $('#advList'),          // результат воткнуть сюда
+            options: { advType: type },    // общие параметры запроса
+            from: $('#leftBar'),           // дин. поиск в этом ДОМ
+            find: ['#regions','#cities'],  // искать это
+            findTo: ['idRegion','idCity']  // отправить как это
+        });
+        $('#advList').show();
+    }
+    function showAdverts()
+    {
+        $('.adv-type:checked').each(function(idx){
+            showSmi( $(this).val() );
+        });
+    }
+</script>
+<div>
+  <select id="okrugs" onchange="showRegions();">
+    <?=HtmlUtils::htmlOptions($data, 'id', 'strName', 0, [0=>'выберите округ']);?>
+  </select>
+  <br>
+  <!-- AJAX::JSON подгрузка селектора -->
+  <select id="regions" onchange="showCities();" style="display:none;"></select>
+  <br>
+  <!-- AJAX::JSON подгрузка селектора -->
+  <select id="cities" onchange="showRekTypes();" style="display:none;"></select>
+</div>

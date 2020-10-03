@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * Главное оформление страниц сайта. Весь вывод начинается тут!
+ *
+ * @global string       $mainContent  -- блок ответа на запрос
+ * @global string|array $cssContent   -- стили для этой страницы id=>['css'=>string, 'attribs'=>string]
+ * @global string|array $jsContent    -- сборка всех js скриптов этого вывода id=>['js'=>string | 'src'=>string]
+ * @global string       $H1           -- главный заголовок страницы, если надо
+ * @global string       $debugContent -- блок отладочной инфы, если надо
+ *
+ * @global string $title       -- заголовок страницы для браузера
+ * @global string $keywords    -- сборка ключевиков, если надо
+ * @global string $description -- описание страницы, если надо
+ *
+ * @global array  $profiler  -- данные профилирования ['mark'=>['start'=>[float time, float memory], 'end'=>[time, memory]]]
+ *
+ * @author fvn-20120201..
+ */
+
+use utils\Layouts;
+
+/** @see /utils/Layouts.php устанавливает время завершения обработки страниц и вывода */
+if( $profiler ){
+  $profiler['layout'] = ['start'=>[microtime(true), memory_get_usage(true)], 'end'=>[0.0, 0.0]];
+}
+//die(var_dump($mainContent));
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" >
+
+  <?php if( isset($keywords)    && !empty($keywords)    ){ ?><meta name="keywords" content="<?=$keywords;?>" /><?php } ?>
+  <?php if( isset($description) && !empty($description) ){ ?><meta name="description" content="<?=$description;?>" /><?php } ?>
+
+  <title><?=$title; ?></title>
+
+  <?=Layouts::outCSS();?>
+  <?=Layouts::outJS(); ?>
+
+</head>
+<body>
+	<div id="debugAll" style="display:none;">
+        <!-- Данные для отладки: -->
+        <?=$debugContent; ?>
+    </div>
+
+	<?php if( isset($H1) ){ echo $H1; } // в т.ч. и оформление, гл.меню, логотип если надо.. ?>
+
+	<div id=mainBody>
+        <!-- тело всей страницы -->
+        <?=$mainContent; ?>
+    </div>
+
+    <?php if( $profiler ){
+      $profiler['global']['end'] = $profiler['layout']['end'] = [ microtime(true), memory_get_usage(true) ];
+      echo Layouts::outProfiler();
+    } ?>
+</body>
+</html>

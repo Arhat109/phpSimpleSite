@@ -1,0 +1,27 @@
+<?php
+/**
+ *  общее оформление вывода в iframe
+ *  
+ *  @author fvn-20140211
+ */
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="rus" lang="rus">
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <?php 
+        if( !empty($title) ) echo "<title>{$title}</title>";
+        echo Layouts::outCSS();
+        echo Layouts::outJS();
+  ?>
+ </head>
+ <body style="margin:0px; padding:0px;">
+  <div id="debugAll" style="display:none;"><?=$debugContent; ?></div>
+  <h1><?=$H1; ?></h1>
+
+  <?=$mainContent; ?>
+
+  <?=Layouts::outProfiler();?>
+ </body>
+</html>
